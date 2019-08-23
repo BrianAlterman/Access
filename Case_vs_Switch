@@ -1,0 +1,18 @@
+--Case
+
+        CASE
+            WHEN "Disabled Vet" = 'Y'         THEN 'Veteran'
+            WHEN "Veteran (TYPE)" = 'YES'     THEN 'Veteran'
+            WHEN "Military (TYPE)" = 'YES'    THEN 'Veteran'
+            WHEN "Military (TYPE)" = 'SPOUSE' THEN 'Veteran Spouse'
+            ELSE 'Not Affiliated'
+        END
+
+--Switch
+Switch
+  ([SEL_Roster].[Disabled Vet]='Y','Veteran',
+   [SEL_Roster].[Veteran (Type)]='YES','Veteran',
+   [SEL_Roster].[Military (TYPE)]='YES','Veteran',
+   [SEL_Roster].[Military (TYPE)]='SPOUSE','Veteran Spouse',
+   True,
+   'Not Affiliated')
